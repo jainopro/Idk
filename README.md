@@ -1,4 +1,4 @@
-# -- Hàm xóa hiệu ứng và texture
+# -- Fix lag
 local function removeEffectsAndTexturesFrom(object)
     for _, obj in pairs(object:GetDescendants()) do
         -- Các loại hiệu ứng thường gặp
@@ -13,7 +13,7 @@ local function removeEffectsAndTexturesFrom(object)
             pcall(function() obj:Destroy() end)
         end
 
-        -- Các loại texture / hình ảnh bề mặt
+        
         if obj:IsA("SurfaceAppearance") or
            obj:IsA("Decal") or
            obj:IsA("Texture") then
@@ -22,7 +22,7 @@ local function removeEffectsAndTexturesFrom(object)
     end
 end
 
--- Danh sách nơi thường có hiệu ứng / texture
+
 local targets = {
     workspace,
     game:GetService("Lighting"),
@@ -35,7 +35,7 @@ local targets = {
     game:GetService("Workspace").Terrain
 }
 
--- Gọi hàm xóa cho từng nơi
+
 for _, area in pairs(targets) do
     removeEffectsAndTexturesFrom(area)
 end
